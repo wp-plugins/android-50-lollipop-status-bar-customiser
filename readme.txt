@@ -24,6 +24,14 @@ You can see a examples of the widget on my blog:
 
 * http://www.webniraj.com/
 
+== Screenshots ==
+
+1. Status Bar using #53A6DC
+
+2. Status Bar using #EC574B
+
+3. Status Bar using #23282E
+
 == Changelog ==
 
 = 1.0 =
