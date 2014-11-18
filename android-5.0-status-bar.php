@@ -89,7 +89,7 @@ class WN_Android_50_Statusbar
     
     $output = '<!-- WebNiraj Androind 5.0 Status Bar Plugin -->' . PHP_EOL;
     
-    if ( is_home() ) {
+    if ( is_front_page() ) {
       $output .= '<meta name="theme-color" content="#'. ( isset( $this->options['home-colour'] ) ? $this->options['home-colour'] : '#3B9BD6' ) .'">' . PHP_EOL;
     } else if ( is_single() ) {
       $output .= '<meta name="theme-color" content="#'. ( isset( $this->options['post-colour'] ) ? $this->options['post-colour'] : '#57585A' ) .'">' . PHP_EOL;
