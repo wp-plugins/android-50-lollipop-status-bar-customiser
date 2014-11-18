@@ -37,3 +37,6 @@ You can see a examples of the widget on my blog:
 = 1.0 =
 * Initial release
 * Customise colour for pages, posts and homepage
+
+= 1.1 =
+* Added Home Page colour setting
