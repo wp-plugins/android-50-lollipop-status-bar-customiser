@@ -89,10 +89,12 @@ class WN_Android_50_Statusbar
     
     $output = '<!-- WebNiraj Androind 5.0 Status Bar Plugin -->' . PHP_EOL;
     
-    if ( is_single() ) {
-      $output .= '<meta name="theme-color" content="#'. ( isset( $this->options['post-colour'] ) ? $this->options['post-colour'] : '#FF9900' ) .'">' . PHP_EOL;
+    if ( is_home() ) {
+      $output .= '<meta name="theme-color" content="#'. ( isset( $this->options['home-colour'] ) ? $this->options['home-colour'] : '#3B9BD6' ) .'">' . PHP_EOL;
+    } else if ( is_single() ) {
+      $output .= '<meta name="theme-color" content="#'. ( isset( $this->options['post-colour'] ) ? $this->options['post-colour'] : '#57585A' ) .'">' . PHP_EOL;
     } else if ( is_page() ) {
-      $output .= '<meta name="theme-color" content="#'. ( isset( $this->options['page-colour'] ) ? $this->options['page-colour'] : '#FF3300' ) .'">' . PHP_EOL;
+      $output .= '<meta name="theme-color" content="#'. ( isset( $this->options['page-colour'] ) ? $this->options['page-colour'] : '#91268E' ) .'">' . PHP_EOL;
     } else {
       $output .= '<meta name="theme-color" content="#'. ( isset( $this->options['default-colour'] ) ? $this->options['default-colour'] : '#3F51B5' ) .'">' . PHP_EOL;
     }
@@ -125,6 +127,15 @@ class WN_Android_50_Statusbar
       'wn-android-statusbar', // Page
       'setting_section_id', // Section     
       [ 'id' => 'default-colour' ]            
+    );
+    
+    add_settings_field(
+      'home-colour', // ID
+      'Home Page Colour', // Title 
+      array( $this, 'colour_callback' ), // Callback
+      'wn-android-statusbar', // Page
+      'setting_section_id', // Section     
+      [ 'id' => 'home-colour' ]            
     );
     
     add_settings_field(
