@@ -4,7 +4,7 @@ Plugin Name: Android 5.0 Lollipop Status Bar Customiser
 Plugin URI: http://www.webniraj.com/wordpress/
 Description: Use this plugin to change the Status Bar of Devices Running Android 5.0 Lollipop.
 Author: Niraj Shah
-Version: 1.0
+Version: 1.1.1
 Author URI: http://www.webniraj.com/
 */
 
