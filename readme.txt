@@ -20,11 +20,13 @@ This plugin lets you customise the Status Bar of Android devices running Android
 
 == Screenshots ==
 
-1. Status Bar using #53A6DC
+1. Example of the coloured Chrome windows and custom Icon (image has been modified to collapse the windows into one screen)
 
-2. Status Bar using #EC574B
+2. Status Bar using #53A6DC
 
-3. Status Bar using #23282E
+3. Status Bar using #EC574B
+
+4. Status Bar using #23282E
 
 == Changelog ==
 
