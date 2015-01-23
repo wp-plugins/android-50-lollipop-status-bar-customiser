@@ -4,7 +4,7 @@ Donate link:
 Tags: android 5.0, android lollipop, status bar, browser, chrome
 Requires at least: 2.7
 Tested up to: 4.1
-Stable tag: 1.2
+Stable tag: 1.2.1
 
 Use this plugin to change the Status Bar of Devices Running Android 5.0 Lollipop.
 
@@ -30,25 +30,28 @@ This plugin lets you customise the Status Bar of Android devices running Android
 
 == Changelog ==
 
-= 1.0 =
-* Initial release
-* Customise colour for pages, posts and homepage
-
-= 1.1 =
-* Added Home Page colour setting
-
-= 1.1.1 =
-* Fixed bug with Home Page setting
-
-= 1.1.2 =
-* Bug fixes
-
-= 1.1.3 =
-* Bug fixes for pre-PHP 5.4 compatibility (credit to Demetrius Schwab for the bug report)
+= 1.2.1 =
+* Minor copy change to clarify icon size (192px by 192px)
 
 = 1.2 =
 * General improvements to the plugin
 * Added option to customise Icon (credit to Wesley Griffiths for the suggestion)
+
+= 1.1.3 =
+* Bug fixes for pre-PHP 5.4 compatibility (credit to Demetrius Schwab for the bug report)
+
+= 1.1.2 =
+* Bug fixes
+
+= 1.1.1 =
+* Fixed bug with Home Page setting
+
+= 1.1 =
+* Added Home Page colour setting
+
+= 1.0 =
+* Initial release
+* Customise colour for pages, posts and homepage
 
 == Other Notes ==
 
