@@ -60,4 +60,4 @@ I would like to thank those who have downloaded the plugin and suggested improve
 
 = Credits =
 
-This plugin uses code [Mike Jolley](http://mikejolley.com/2012/12/using-the-new-wordpress-3-5-media-uploader-in-plugins/ "Using the WordPress 3.5 Media Uploader within Plugins, by Mike Jolley").
+This plugin uses code by [Mike Jolley](http://mikejolley.com/2012/12/using-the-new-wordpress-3-5-media-uploader-in-plugins/ "Using the WordPress 3.5 Media Uploader within Plugins, by Mike Jolley").
