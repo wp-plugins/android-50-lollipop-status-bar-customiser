@@ -4,7 +4,7 @@ Plugin Name: Android 5.0 Lollipop Status Bar Customiser
 Plugin URI: http://www.webniraj.com/wordpress/
 Description: Use this plugin to change the Status Bar of Devices Running Android 5.0 Lollipop.
 Author: Niraj Shah
-Version: 1.1.3
+Version: 1.2
 Author URI: http://www.webniraj.com/
 */
 
@@ -23,6 +23,7 @@ class WN_Android_50_Statusbar
     if ( is_admin() ) {
       add_action( 'admin_menu', array( $this, 'add_plugin_page' ) );
       add_action( 'admin_init', array( $this, 'page_init' ) );
+      add_action( 'admin_enqueue_scripts', array( $this, 'load_media_files' ) );
       add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array( $this, 'add_action_links' ) );
     }
     add_action( 'wp_head', array( $this, 'add_android_meta' ) );
@@ -57,6 +58,15 @@ class WN_Android_50_Statusbar
   }
   
   /**
+   * Add media files
+   */
+  public function load_media_files()
+  {
+    wp_enqueue_media();
+    wp_enqueue_script( 'wn-script', plugins_url( 'js/wn-script.js', __FILE__ ), array(), '1.0.0', true );
+  }
+  
+  /**
    * Options page callback
    */
   public function settings_page()
@@ -65,16 +75,16 @@ class WN_Android_50_Statusbar
     $this->options = get_option( 'wn_android_statusbar' );
     ?>
     <div class="wrap">
-        <?php screen_icon(); ?>
-        <h2>Androind 5.0 Lollipop Statusbar</h2>           
-        <form method="post" action="options.php">
-        <?php
-          // This prints out all hidden setting fields
-          settings_fields( 'wn_android_options' );   
-          do_settings_sections( 'wn-android-statusbar' );
-          submit_button(); 
-        ?>
-        </form>
+      <?php screen_icon(); ?>
+      <h2>Androind 5.0 Lollipop Statusbar</h2>           
+      <form method="post" action="options.php">
+      <?php
+        // This prints out all hidden setting fields
+        settings_fields( 'wn_android_options' );   
+        do_settings_sections( 'wn-android-statusbar' );
+        submit_button(); 
+      ?>
+      </form>
     </div>
     <?php
   }
@@ -99,6 +109,10 @@ class WN_Android_50_Statusbar
       $output .= '<meta name="theme-color" content="#'. ( isset( $this->options['default-colour'] ) ? $this->options['default-colour'] : '#3F51B5' ) .'">' . PHP_EOL;
     }
     
+    if ( isset( $this->options['android-icon'] ) ) {
+      $output .= '<link rel="icon" sizes="192x192" href="'. $this->options['android-icon'] .'">' . PHP_EOL;
+    }
+    
     echo $output;
   }
   
@@ -114,9 +128,9 @@ class WN_Android_50_Statusbar
     );
 
     add_settings_section(
-      'setting_section_id', // ID
+      'android-colours', // ID
       'Status Bar Colour', // Title
-      array( $this, 'print_section_info' ), // Callback
+      array( $this, 'print_section_info_colours' ), // Callback
       'wn-android-statusbar' // Page
     );
 
@@ -125,7 +139,7 @@ class WN_Android_50_Statusbar
       'Default Colour', // Title 
       array( $this, 'colour_callback' ), // Callback
       'wn-android-statusbar', // Page
-      'setting_section_id', // Section     
+      'android-colours', // Section     
       array( 'id' => 'default-colour' )
     );
     
@@ -134,7 +148,7 @@ class WN_Android_50_Statusbar
       'Home Page Colour', // Title 
       array( $this, 'colour_callback' ), // Callback
       'wn-android-statusbar', // Page
-      'setting_section_id', // Section     
+      'android-colours', // Section     
       array( 'id' => 'home-colour' )
     );
     
@@ -143,7 +157,7 @@ class WN_Android_50_Statusbar
       'Page Colour', // Title 
       array( $this, 'colour_callback' ), // Callback
       'wn-android-statusbar', // Page
-      'setting_section_id', // Section     
+      'android-colours', // Section     
       array( 'id' => 'page-colour' )  
     );
     
@@ -152,8 +166,24 @@ class WN_Android_50_Statusbar
       'Post Colour', // Title 
       array( $this, 'colour_callback' ), // Callback
       'wn-android-statusbar', // Page
-      'setting_section_id', // Section     
+      'android-colours', // Section     
       array( 'id' => 'post-colour' )
+    );
+    
+    add_settings_section(
+      'android-icons', // ID
+      'Icon', // Title
+      array( $this, 'print_section_info_icons' ), // Callback
+      'wn-android-statusbar' // Page
+    );
+    
+    add_settings_field(
+      'android-icon', // ID
+      'Android Icon', // Title 
+      array( $this, 'file_callback' ), // Callback
+      'wn-android-statusbar', // Page
+      'android-icons', // Section     
+      array( 'id' => 'android-icon' )
     );
   }
   
@@ -172,11 +202,19 @@ class WN_Android_50_Statusbar
   }
   
   /** 
-   * Print the Section text
+   * Print the Section text for Colours
    */
-  public function print_section_info()
+  public function print_section_info_colours()
   {
-    print 'Enter a <a href="http://www.w3schools.com/tags/ref_colorpicker.asp" target="_blank">HEX colour</a> below:';
+    echo 'Enter a <a href="http://www.w3schools.com/tags/ref_colorpicker.asp" target="_blank">HEX colour</a> below:';
+  }
+  
+  /** 
+   * Print the Section text for Icons
+   */
+  public function print_section_info_icons()
+  {
+    echo 'Enter a URL or select a file to use from the Media Gallery. For best results, use an absolute URL.';
   }
   
   /** 
@@ -186,6 +224,18 @@ class WN_Android_50_Statusbar
   {
     printf(
       '#<input type="text" name="wn_android_statusbar[%s]" value="%s" placeholder="3f51b5" />',
+      $args['id'],
+      isset( $this->options[ $args['id'] ] ) ? esc_attr( $this->options[ $args['id'] ] ) : ''
+    );
+  }
+  
+  /** 
+   * Get the settings option array and print one of its values
+   */
+  public function file_callback( $args )
+  {
+    printf(
+      '<input type="text" name="wn_android_statusbar[%s]" value="%s" placeholder="" /> <button type="button" class="upload_image_button button button-info" data-uploader-title="Select Android Icon" data-uploader-button-text="Set as Android Icon">Select</button>',
       $args['id'],
       isset( $this->options[ $args['id'] ] ) ? esc_attr( $this->options[ $args['id'] ] ) : ''
     );
