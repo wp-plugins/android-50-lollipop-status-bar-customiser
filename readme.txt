@@ -3,8 +3,8 @@ Contributors: niraj.shah
 Donate link:
 Tags: android 5.0, android lollipop, status bar, browser, chrome
 Requires at least: 2.7
-Tested up to: 4.0
-Stable tag: 1.1.3
+Tested up to: 4.1
+Stable tag: 1.2
 
 Use this plugin to change the Status Bar of Devices Running Android 5.0 Lollipop.
 
@@ -14,15 +14,9 @@ This plugin lets you customise the Status Bar of Android devices running Android
 
 == Installation ==
 
-1. Upload `android-5.0-status-bar.php` to the `/wp-content/plugins/` directory
+1. Upload the `android-50-lollipop-status-bar-customiser` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Set a Colour and Save settings.
-
-== Example ==
-
-You can see a examples of the widget on my blog:
-
-* http://www.webniraj.com/
+3. Set a Colour, Upload a Icon and Save settings.
 
 == Screenshots ==
 
@@ -48,4 +42,22 @@ You can see a examples of the widget on my blog:
 * Bug fixes
 
 = 1.1.3 =
-* Bug fixes for pre-PHP 5.4 compatibility
+* Bug fixes for pre-PHP 5.4 compatibility (credit to Demetrius Schwab for the bug report)
+
+= 1.2 =
+* General improvements to the plugin
+* Added option to customise Icon (credit to Wesley Griffiths for the suggestion)
+
+== Other Notes ==
+
+= Example =
+
+You can see a examples of the plugin on my [blog](http://www.webniraj.com/ "WebNiraj") and [company website](http://nuetaventures.com "Nueta Ventures").
+
+= Special Thanks =
+
+I would like to thank those who have downloaded the plugin and suggested improvements, reported bugs and generally helped to make the plugin better. You can submit bugs, suggestions or contact me directly [here](https://www.webniraj.com/contact/ "Contact me").
+
+= Credits =
+
+This plugin uses code [Mike Jolley](http://mikejolley.com/2012/12/using-the-new-wordpress-3-5-media-uploader-in-plugins/ "Using the WordPress 3.5 Media Uploader within Plugins, by Mike Jolley").
