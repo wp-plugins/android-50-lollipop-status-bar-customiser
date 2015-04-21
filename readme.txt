@@ -3,7 +3,7 @@ Contributors: niraj.shah
 Donate link:
 Tags: android 5.0, android lollipop, status bar, browser, chrome
 Requires at least: 2.7
-Tested up to: 4.1
+Tested up to: 4.2
 Stable tag: 1.2.1
 
 Use this plugin to change the Status Bar of Devices Running Android 5.0 Lollipop.
